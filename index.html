@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GS Portal - Government Service</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <!-- Font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Link CSS Sidebar & Style -->
+    <link rel="stylesheet" href="assets/css/sidebar.css" />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        /* Background Abu-abu sangat muda biar gak sakit mata */
+        background-color: #f8fafc;
+        color: #334155;
+      }
+
+      /* Pattern Background Halus (Biar gak polos bgt) */
+      .bg-pattern {
+        background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+
+      /* Card Glass Putih (Light Mode) */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      }
+
+      /* Card Employee Premium (White & Red Accent) */
+      .card-premium {
+        background: white;
+        border: 1px solid #f1f5f9;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
+      }
+
+      /* Gradient Text Telkom Style */
+      .text-gradient-red {
+        background: linear-gradient(to right, #dc2626, #b91c1c);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
+  </head>
+
+  <body class="bg-pattern min-h-screen overflow-hidden relative">
+    <div class="flex h-screen w-full">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar-component">
+        <!-- === TOMBOL CLOSE (Hanya Muncul di Mobile) === -->
+        <button id="close-sidebar" class="md:hidden absolute top-4 right-4 text-white/80 hover:text-white p-2">
+          <i class="fas fa-times text-2xl"></i>
+        </button>
+
+        <div class="sidebar-logo">
+          <!-- Logo Telkom (Pastikan PNG transparan) -->
+          <img src="/assets/images/logo/logo.png" alt="Telkom Indonesia" class="logo-full w-32" />
+          <img src="/assets/images/logo/logo.png" alt="T" class="logo-icon hidden" />
+        </div>
+
+        <nav class="sidebar-nav">
+          <ul>
+            <li>
+              <a href="/index.html" class="nav-link">
+                <i class="fas fa-home text-lg w-6 text-center"></i>
+                <span>Home</span>
+              </a>
+            </li>
+            <li>
+              <a href="/pages/flowchart.html" class="nav-link">
+                <i class="fas fa-project-diagram text-lg w-6 text-center"></i>
+                <span>Flowchart</span>
+              </a>
+            </li>
+            <li>
+              <a href="/pages/policy.html" class="nav-link">
+                <i class="fas fa-file-shield text-lg w-6 text-center"></i>
+                <span>Policy</span>
+              </a>
+            </li>
+            <li>
+              <a href="/pages/employee.html" class="nav-link">
+                <i class="fas fa-users text-lg w-6 text-center"></i>
+                <span>Employee</span>
+              </a>
+            </li>
+            <li>
+              <a href="/pages/product.html" class="nav-link">
+                <i class="fas fa-box-open text-lg w-6 text-center"></i>
+                <span>Product</span>
+              </a>
+            </li>
+            <li>
+              <a href="/pages/report.html" class="nav-link">
+                <i class="fas fa-chart-line text-lg w-6 text-center"></i>
+                <span>Report</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="flex-1 flex flex-col p-4 md:p-8 h-full overflow-y-auto md:overflow-hidden ml-0 transition-all duration-300">
+        <!-- Header Section -->
+        <div id="header" class="mb-6 md:mb-8 fade-in-up">
+          <div class="flex justify-between items-center bg-white p-5 rounded-2xl shadow-sm border-l-4 border-red-600">
+            <div>
+              <h2 class="text-2xl font-bold tracking-tight text-gray-800">Government Service Portal</h2>
+              <p class="text-sm text-gray-500 mt-1">Sinergi membangun negeri.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BENTO GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-5 h-full max-h-[750px] pb-4">
+          <!-- BIG CARD: EMPLOYEE (White Theme) -->
+          <a href="pages/employee.html" class="group md:col-span-8 md:row-span-2 card-premium rounded-3xl relative overflow-hidden flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:border-red-200">
+            <!-- Left Text Content -->
+            <div class="p-8 md:p-12 flex flex-col justify-center z-20 relative md:w-1/2 h-full bg-white/90 backdrop-blur-sm">
+              <span class="inline-block py-1 px-3 rounded-full bg-red-50 text-red-600 text-xs font-bold tracking-wider mb-4 w-fit border border-red-100"> ⭐ DIVISI GS </span>
+
+              <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight mb-4">
+                Meet Our <br />
+                <span class="text-gradient-red">Dream Team</span>
+              </h1>
+
+              <p class="text-gray-500 mb-8 leading-relaxed">Kenali profesional di balik layanan prima GS. Orang-orang hebat dengan dedikasi untuk Indonesia.</p>
+
+              <div class="flex items-center gap-3">
+                <span class="px-6 py-3 rounded-full bg-red-600 text-white font-semibold shadow-lg shadow-red-200 group-hover:bg-red-700 group-hover:shadow-red-300 transition-all flex items-center gap-2">
+                  Lihat Profil <i class="fas fa-arrow-right text-sm"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- Right Image Content -->
+            <div class="absolute inset-0 md:relative md:w-1/2 h-full z-10">
+              <!-- Background Image -->
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('assets/images/employee/Asep.png')"></div>
+              <!-- Gradient Overlay (Putih ke Transparan) biar text kebaca -->
+              <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-white via-white/40 to-transparent"></div>
+
+              <!-- Floating Avatars (Aksen) -->
+              <div class="hidden md:flex absolute bottom-6 right-6 -space-x-4">
+                <div class="w-14 h-14 rounded-full border-2 border-white shadow-md bg-gray-100 bg-cover" style="background-image: url('assets/images/employee/Veberia.png')"></div>
+                <div class="w-14 h-14 rounded-full border-2 border-white shadow-md bg-gray-100 bg-cover" style="background-image: url('assets/images/employee/Dicky.png')"></div>
+                <div class="w-14 h-14 rounded-full border-2 border-white shadow-md bg-gray-100 bg-cover flex items-center justify-center text-xs font-bold text-gray-600">+10</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- SIDE MENU GRID -->
+          <div class="md:col-span-4 md:row-span-2 grid grid-cols-2 md:grid-cols-1 md:grid-rows-4 gap-4">
+            <!-- Flowchart -->
+            <a href="pages/flowchart.html" class="group bg-white rounded-2xl p-4 flex items-center gap-4 border border-gray-100 shadow-sm hover:shadow-lg hover:border-red-200 transition-all duration-300">
+              <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-red-600 transition-colors duration-300">
+                <!-- Icon Font Awesome biar ringan -->
+                <i class="fas fa-project-diagram text-red-600 text-xl group-hover:text-white transition-colors"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-700 group-hover:text-red-600 transition-colors">Flowchart</h3>
+                <p class="text-xs text-gray-400">Alur & Proses</p>
+              </div>
+            </a>
+
+            <!-- Policy -->
+            <a href="pages/policy.html" class="group bg-white rounded-2xl p-4 flex items-center gap-4 border border-gray-100 shadow-sm hover:shadow-lg hover:border-red-200 transition-all duration-300">
+              <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-red-600 transition-colors duration-300">
+                <i class="fas fa-file-shield text-red-600 text-xl group-hover:text-white transition-colors"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-700 group-hover:text-red-600 transition-colors">Policy</h3>
+                <p class="text-xs text-gray-400">Aturan & SOP</p>
+              </div>
+            </a>
+
+            <!-- Product -->
+            <a href="pages/product.html" class="group bg-white rounded-2xl p-4 flex items-center gap-4 border border-gray-100 shadow-sm hover:shadow-lg hover:border-red-200 transition-all duration-300">
+              <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-red-600 transition-colors duration-300">
+                <i class="fas fa-box-open text-red-600 text-xl group-hover:text-white transition-colors"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-700 group-hover:text-red-600 transition-colors">Product</h3>
+                <p class="text-xs text-gray-400">Katalog Layanan</p>
+              </div>
+            </a>
+
+            <!-- Report -->
+            <a href="pages/report.html" class="group bg-white rounded-2xl p-4 flex items-center gap-4 border border-gray-100 shadow-sm hover:shadow-lg hover:border-red-200 transition-all duration-300">
+              <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-red-600 transition-colors duration-300">
+                <i class="fas fa-chart-pie text-red-600 text-xl group-hover:text-white transition-colors"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-700 group-hover:text-red-600 transition-colors">Report</h3>
+                <p class="text-xs text-gray-400">Data Kinerja</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

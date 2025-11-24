@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report - GS Portal</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Style External -->
+    <link rel="stylesheet" href="../assets/css/sidebar.css" />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f8fafc;
+        color: #334155;
+      }
+
+      /* Animasi Floating buat Icon */
+      .float-anim {
+        animation: float 3s ease-in-out infinite;
+      }
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50 h-screen w-full overflow-hidden flex">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar-component">
+      <!-- === TOMBOL CLOSE (Hanya Muncul di Mobile) === -->
+      <button id="close-sidebar" class="md:hidden absolute top-4 right-4 text-white/80 hover:text-white p-2">
+        <i class="fas fa-times text-2xl"></i>
+      </button>
+
+      <div class="sidebar-logo">
+        <!-- Logo Telkom (Pastikan PNG transparan) -->
+        <img src="/assets/images/logo/logo.png" alt="Telkom Indonesia" class="logo-full w-32" />
+        <img src="/assets/images/logo/logo.png" alt="T" class="logo-icon hidden" />
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="/index.html" class="nav-link">
+              <i class="fas fa-home text-lg w-6 text-center"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/flowchart.html" class="nav-link">
+              <i class="fas fa-project-diagram text-lg w-6 text-center"></i>
+              <span>Flowchart</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/policy.html" class="nav-link">
+              <i class="fas fa-file-shield text-lg w-6 text-center"></i>
+              <span>Policy</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/employee.html" class="nav-link">
+              <i class="fas fa-users text-lg w-6 text-center"></i>
+              <span>Employee</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/product.html" class="nav-link">
+              <i class="fas fa-box-open text-lg w-6 text-center"></i>
+              <span>Product</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/report.html" class="nav-link">
+              <i class="fas fa-chart-line text-lg w-6 text-center"></i>
+              <span>Report</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 flex flex-col p-4 md:p-8 h-full overflow-y-auto md:overflow-hidden ml-0 transition-all duration-300">
+      <!-- Header -->
+      <!-- Header Section -->
+      <div id="header" class="mb-6 md:mb-8 fade-in-up">
+        <div class="flex justify-between items-center bg-white p-5 rounded-2xl shadow-sm border-l-4 border-red-600">
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight text-gray-800">Government Service Portal</h2>
+            <p class="text-sm text-gray-500 mt-1">Sinergi membangun negeri.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Container (Center Alignment) -->
+      <div class="p-4 md:p-8 pt-4 pb-20 h-full flex flex-col justify-center items-center">
+        <div class="bg-white rounded-3xl p-10 md:p-16 shadow-sm border border-gray-100 text-center max-w-2xl mx-auto">
+          <!-- Icon Illustration -->
+          <div class="mb-8 relative inline-block">
+            <!-- Lingkaran Background -->
+            <div class="w-32 h-32 bg-red-50 rounded-full flex items-center justify-center mx-auto relative z-10">
+              <i class="fas fa-chart-pie text-5xl text-red-500 float-anim"></i>
+            </div>
+            <!-- Efek Pulse di belakang -->
+            <div class="absolute top-0 left-0 w-32 h-32 bg-red-400 rounded-full opacity-20 animate-ping"></div>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Fitur Masih OTW 🚀</h1>
+
+          <p class="text-gray-500 text-lg mb-8 leading-relaxed">
+            Halaman <b>Report & Analytics</b> sedang dalam tahap pengembangan oleh tim IT. <br />
+            Kami sedang meracik data agar tampil cantik di sini.
+          </p>
+
+          <!-- Progress Bar Pura-pura -->
+          <div class="w-full bg-gray-100 rounded-full h-2.5 mb-2 overflow-hidden">
+            <div class="bg-red-600 h-2.5 rounded-full" style="width: 85%"></div>
+          </div>
+          <div class="flex justify-between text-xs text-gray-400 font-medium mb-8">
+            <span>Development Process</span>
+            <span>85%</span>
+          </div>
+
+          <!-- Back Button -->
+          <a href="../index.html" class="inline-flex items-center gap-2 px-8 py-3 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-all hover:shadow-lg hover:shadow-red-200">
+            <i class="fas fa-arrow-left"></i> Kembali ke Dashboard
+          </a>
+        </div>
+
+        <p class="mt-8 text-sm text-gray-400">© 2025 Government Service Division - Telkom Indonesia</p>
+      </div>
+    </main>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

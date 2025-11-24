@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flowchart - GS Portal</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Style External -->
+    <link rel="stylesheet" href="../assets/css/sidebar.css" />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f8fafc;
+        color: #334155;
+      }
+
+      /* Animasi Tab */
+      .tab-content {
+        animation: fadeIn 0.4s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .tab-btn.active {
+        color: #dc2626;
+        border-bottom: 3px solid #dc2626;
+        background-color: #fef2f2;
+      }
+
+      .step-card {
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+      }
+      .step-card:hover {
+        border-left: 4px solid #dc2626;
+        transform: translateX(5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Hide Scrollbar */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* Styling Khusus Tombol Scroll (Biar gak bentrok sama Tailwind) */
+      .scroll-btn-hidden {
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+      }
+      .scroll-btn-visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50 h-screen w-full overflow-hidden flex">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar-component">
+      <!-- === TOMBOL CLOSE (Hanya Muncul di Mobile) === -->
+      <button id="close-sidebar" class="md:hidden absolute top-4 right-4 text-white/80 hover:text-white p-2">
+        <i class="fas fa-times text-2xl"></i>
+      </button>
+
+      <div class="sidebar-logo">
+        <!-- Logo Telkom (Pastikan PNG transparan) -->
+        <img src="/assets/images/logo/logo.png" alt="Telkom Indonesia" class="logo-full w-32" />
+        <img src="/assets/images/logo/logo.png" alt="T" class="logo-icon hidden" />
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="/index.html" class="nav-link">
+              <i class="fas fa-home text-lg w-6 text-center"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/flowchart.html" class="nav-link">
+              <i class="fas fa-project-diagram text-lg w-6 text-center"></i>
+              <span>Flowchart</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/policy.html" class="nav-link">
+              <i class="fas fa-file-shield text-lg w-6 text-center"></i>
+              <span>Policy</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/employee.html" class="nav-link">
+              <i class="fas fa-users text-lg w-6 text-center"></i>
+              <span>Employee</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/product.html" class="nav-link">
+              <i class="fas fa-box-open text-lg w-6 text-center"></i>
+              <span>Product</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/report.html" class="nav-link">
+              <i class="fas fa-chart-line text-lg w-6 text-center"></i>
+              <span>Report</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT (Scrollable Area) -->
+    <!-- ID 'main-scroll-area' penting buat target JS nanti -->
+    <main id="main-scroll-area" class="flex-1 h-full p-4 md:p-8 overflow-y-auto ml-0 transition-all duration-300 relative scroll-smooth">
+      <!-- Header -->
+      <!-- Header Section -->
+      <div id="header" class="mb-6 md:mb-8 fade-in-up">
+        <div class="flex justify-between items-center bg-white p-5 rounded-2xl shadow-sm border-l-4 border-red-600">
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight text-gray-800">Government Service Portal</h2>
+            <p class="text-sm text-gray-500 mt-1">Sinergi membangun negeri.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Container -->
+      <div class="p-4 md:p-8 pt-4 pb-20">
+        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden min-h-[80vh]">
+          <!-- Sticky Navigation -->
+          <div class="sticky top-0 z-20 bg-white border-b border-gray-100 px-6 pt-6">
+            <div class="flex items-center justify-between mb-4">
+              <h1 class="text-2xl font-bold text-gray-800" id="main-title">Activation Order (IO)</h1>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-600 border border-red-200"> SOP Terbaru 2024 </span>
+            </div>
+
+            <div class="flex space-x-2 md:space-x-8 overflow-x-auto no-scrollbar">
+              <button onclick="switchTab('io')" id="btn-io" class="tab-btn active px-4 py-3 text-sm md:text-base font-medium text-gray-500 hover:text-red-500 transition-colors border-b-3 border-transparent whitespace-nowrap">
+                <i class="fas fa-file-import mr-2"></i> Input (IO)
+              </button>
+              <button onclick="switchTab('mo')" id="btn-mo" class="tab-btn px-4 py-3 text-sm md:text-base font-medium text-gray-500 hover:text-red-500 transition-colors border-b-3 border-transparent whitespace-nowrap">
+                <i class="fas fa-edit mr-2"></i> Modify (MO)
+              </button>
+              <button onclick="switchTab('do')" id="btn-do" class="tab-btn px-4 py-3 text-sm md:text-base font-medium text-gray-500 hover:text-red-500 transition-colors border-b-3 border-transparent whitespace-nowrap">
+                <i class="fas fa-trash-alt mr-2"></i> Disconnect (DO)
+              </button>
+            </div>
+          </div>
+
+          <!-- Content Area -->
+          <div class="p-6 md:p-10 bg-gray-50/50">
+            <!-- SECTION IO -->
+            <div id="content-io" class="tab-content block">
+              <div class="mb-10 bg-white p-4 rounded-2xl shadow-sm border border-gray-100 text-center">
+                <h4 class="text-lg font-semibold text-gray-700 mb-4">Flowchart Diagram: Activation</h4>
+                <img src="https://placehold.co/720x400/fecaca/dc2626?text=Diagram+Input+Order+(IO)" alt="Flowchart Input" class="max-w-full h-auto rounded-lg mx-auto shadow-md" />
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-6 border-l-4 border-red-600 pl-4">Step By Step Guide</h3>
+              <div class="space-y-8">
+                <div class="step-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-sm">1</span>
+                    <h4 class="font-semibold text-gray-800">Login & Menu Selection</h4>
+                  </div>
+                  <img src="https://placehold.co/720x400/f1f5f9/64748b?text=Step+1:+Login+CRM" class="w-full rounded-lg mb-4 border border-gray-100" />
+                  <p class="text-gray-600 leading-relaxed">Login ke aplikasi CRM, pilih menu <b>Sales Order</b>.</p>
+                </div>
+                <div class="step-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-sm">2</span>
+                    <h4 class="font-semibold text-gray-800">Create New Order</h4>
+                  </div>
+                  <img src="https://placehold.co/720x400/f1f5f9/64748b?text=Step+2:+Create+Order" class="w-full rounded-lg mb-4 border border-gray-100" />
+                  <p class="text-gray-600 leading-relaxed">Klik tombol (+) atau "New Order". Isi data pelanggan.</p>
+                </div>
+                <!-- Dummy Content biar panjang buat ngetes scroll -->
+                <div class="step-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-sm">3</span>
+                    <h4 class="font-semibold text-gray-800">Submit & Review</h4>
+                  </div>
+                  <img src="https://placehold.co/720x400/f1f5f9/64748b?text=Step+3:+Submit" class="w-full rounded-lg mb-4 border border-gray-100" />
+                  <p class="text-gray-600 leading-relaxed">Review kembali data, lalu klik Submit. Order akan diproses oleh sistem.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION MO -->
+            <div id="content-mo" class="tab-content hidden">
+              <div class="mb-10 bg-white p-4 rounded-2xl shadow-sm border border-gray-100 text-center">
+                <h4 class="text-lg font-semibold text-gray-700 mb-4">Flowchart Diagram: Modify</h4>
+                <img src="/assets/images/flowchart/flowchart-modif.png" onerror="this.src='https://placehold.co/720x400/fecaca/dc2626?text=Diagram+Modify+Order'" class="max-w-full h-auto rounded-lg mx-auto shadow-md" />
+              </div>
+              <div class="space-y-8">
+                <div class="step-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-sm">1</span>
+                    <h4 class="font-semibold text-gray-800">Access My Sales Orders</h4>
+                  </div>
+                  <img src="/assets/images/flowchart/step1-m.png" onerror="this.src='https://placehold.co/720x400/f1f5f9/64748b?text=MO+Step+1'" class="w-full rounded-lg mb-4 border border-gray-100" />
+                  <p class="text-gray-600 leading-relaxed">Masuk menu Sales Order > My Sales Orders.</p>
+                </div>
+                <!-- Dummy Content biar panjang -->
+                <div class="h-64 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400">Content Spacer 1</div>
+                <div class="h-64 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400">Content Spacer 2</div>
+              </div>
+            </div>
+
+            <!-- SECTION DO -->
+            <div id="content-do" class="tab-content hidden">
+              <div class="mb-10 bg-white p-4 rounded-2xl shadow-sm border border-gray-100 text-center">
+                <h4 class="text-lg font-semibold text-gray-700 mb-4">Flowchart Diagram: Disconnect</h4>
+                <img src="/assets/images/flowchart/flowchart-DO.png" onerror="this.src='https://placehold.co/720x400/fecaca/dc2626?text=Diagram+Disconnect+Order'" class="max-w-full h-auto rounded-lg mx-auto shadow-md" />
+              </div>
+              <div class="space-y-8">
+                <div class="step-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-sm">1</span>
+                    <h4 class="font-semibold text-gray-800">Find Agreement</h4>
+                  </div>
+                  <img src="/assets/images/flowchart/step3-DO.png" onerror="this.src='https://placehold.co/720x400/f1f5f9/64748b?text=DO+Step+1'" class="w-full rounded-lg mb-4 border border-gray-100" />
+                  <p class="text-gray-600 leading-relaxed">Cari Order# dan pilih Agreement.</p>
+                </div>
+                <!-- Dummy Content biar panjang -->
+                <div class="h-64 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400">Content Spacer 1</div>
+                <div class="h-64 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400">Content Spacer 2</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- === FITUR BARU: TOMBOL SCROLL TO TOP === -->
+    <!-- Position: Fixed di kanan bawah, Z-index tinggi -->
+    <button
+      id="scrollToTopBtn"
+      class="fixed bottom-8 right-8 z-50 bg-red-600 text-white w-12 h-12 rounded-full shadow-lg shadow-red-600/30 flex items-center justify-center transition-all duration-300 scroll-btn-hidden hover:bg-red-700 hover:scale-110 active:scale-90"
+      title="Kembali ke Atas"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../assets/js/script.js"></script>
+
+    <script>
+      // === LOGIC TAB SWITCHING ===
+      function switchTab(type) {
+        const title = document.getElementById("main-title");
+        if (type === "io") title.textContent = "Activation Order (IO)";
+        else if (type === "mo") title.textContent = "Modify Order (MO)";
+        else if (type === "do") title.textContent = "Disconnect Order (DO)";
+
+        document.querySelectorAll(".tab-content").forEach((el) => el.classList.add("hidden"));
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        document.getElementById("content-" + type).classList.remove("hidden");
+        document.getElementById("btn-" + type).classList.add("active");
+
+        // Scroll container content ke atas pas ganti tab
+        document.getElementById("main-scroll-area").scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // === LOGIC SCROLL TO TOP BUTTON ===
+      document.addEventListener("DOMContentLoaded", () => {
+        const mainContent = document.getElementById("main-scroll-area");
+        const scrollBtn = document.getElementById("scrollToTopBtn");
+
+        // 1. Deteksi Scroll
+        mainContent.addEventListener("scroll", () => {
+          // Kalau scroll udah lebih dari 300px, munculin tombol
+          if (mainContent.scrollTop > 300) {
+            scrollBtn.classList.remove("scroll-btn-hidden");
+            scrollBtn.classList.add("scroll-btn-visible");
+          } else {
+            scrollBtn.classList.remove("scroll-btn-visible");
+            scrollBtn.classList.add("scroll-btn-hidden");
+          }
+        });
+
+        // 2. Klik Tombol -> Naik ke Atas
+        scrollBtn.addEventListener("click", () => {
+          mainContent.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

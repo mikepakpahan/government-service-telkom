@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Products - GS Portal</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Style External -->
+    <link rel="stylesheet" href="../assets/css/sidebar.css" />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f8fafc;
+        color: #334155;
+      }
+
+      /* Animasi Masuk */
+      .fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Delays untuk animasi berurutan */
+      .delay-100 {
+        animation-delay: 100ms;
+      }
+      .delay-200 {
+        animation-delay: 200ms;
+      }
+      .delay-300 {
+        animation-delay: 300ms;
+      }
+      .delay-400 {
+        animation-delay: 400ms;
+      }
+
+      /* Card Style */
+      .product-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid #f1f5f9;
+      }
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border-color: #ef4444; /* Red-500 */
+      }
+
+      /* Logo Wrapper Glass Effect */
+      .logo-wrapper {
+        background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+        box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+      }
+
+      /* Scrollbar Hide */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* Tombol Scroll Styling */
+      .scroll-btn-hidden {
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+      }
+      .scroll-btn-visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50 h-screen w-full overflow-hidden flex">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar-component">
+      <!-- === TOMBOL CLOSE (Hanya Muncul di Mobile) === -->
+      <button id="close-sidebar" class="md:hidden absolute top-4 right-4 text-white/80 hover:text-white p-2">
+        <i class="fas fa-times text-2xl"></i>
+      </button>
+
+      <div class="sidebar-logo">
+        <!-- Logo Telkom (Pastikan PNG transparan) -->
+        <img src="/assets/images/logo/logo.png" alt="Telkom Indonesia" class="logo-full w-32" />
+        <img src="/assets/images/logo/logo.png" alt="T" class="logo-icon hidden" />
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="/index.html" class="nav-link">
+              <i class="fas fa-home text-lg w-6 text-center"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/flowchart.html" class="nav-link">
+              <i class="fas fa-project-diagram text-lg w-6 text-center"></i>
+              <span>Flowchart</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/policy.html" class="nav-link">
+              <i class="fas fa-file-shield text-lg w-6 text-center"></i>
+              <span>Policy</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/employee.html" class="nav-link">
+              <i class="fas fa-users text-lg w-6 text-center"></i>
+              <span>Employee</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/product.html" class="nav-link">
+              <i class="fas fa-box-open text-lg w-6 text-center"></i>
+              <span>Product</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/report.html" class="nav-link">
+              <i class="fas fa-chart-line text-lg w-6 text-center"></i>
+              <span>Report</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-scroll-area" class="flex-1 flex flex-col p-4 md:p-8 h-full overflow-y-auto md:overflow-hidden ml-0 transition-all duration-300">
+      <!-- Header -->
+      <!-- Header Section -->
+      <div id="header" class="mb-6 md:mb-8 fade-in-up">
+        <div class="flex justify-between items-center bg-white p-5 rounded-2xl shadow-sm border-l-4 border-red-600">
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight text-gray-800">Government Service Portal</h2>
+            <p class="text-sm text-gray-500 mt-1">Sinergi membangun negeri.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Container -->
+      <div class="p-4 md:p-8 pt-4 pb-20">
+        <!-- Main Card Wrapper -->
+        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden min-h-[85vh]">
+          <!-- Title Section -->
+          <div class="sticky top-0 z-20 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-6 pt-6 pb-4">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h1 class="text-2xl font-bold text-gray-800">Digital Solutions</h1>
+                <p class="text-sm text-gray-500">Katalog Produk & Layanan Unggulan Telkom</p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-600 border border-red-100"> <i class="fas fa-layer-group mr-1"></i> 4 Core Products </span>
+            </div>
+          </div>
+
+          <!-- Products List Area -->
+          <div class="p-6 md:p-10 bg-gray-50/30 space-y-6">
+            <!-- 1. IndiBiz -->
+            <div class="product-card bg-white rounded-2xl p-6 flex flex-col md:flex-row gap-6 md:gap-8 fade-in-up delay-100 group">
+              <!-- Logo Area -->
+              <div class="w-full md:w-48 h-40 md:h-auto shrink-0 logo-wrapper rounded-xl flex items-center justify-center p-4 border border-gray-100 group-hover:border-red-100 transition-colors relative overflow-hidden">
+                <!-- Decorative Blob -->
+                <div class="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                <img src="../assets/images/product/indibiz.png" alt="IndiBiz" class="max-w-full max-h-full object-contain relative z-10 transition-transform duration-300 group-hover:scale-110" />
+              </div>
+
+              <!-- Text Area -->
+              <div class="flex-1 flex flex-col justify-center">
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-xl font-bold text-gray-800 group-hover:text-red-600 transition-colors">IndiBiz</h3>
+                  <span class="text-[10px] font-bold px-2 py-0.5 bg-blue-50 text-blue-600 rounded border border-blue-100">B2B</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4 text-justify">
+                  IndiBiz adalah ekosistem solusi digital dunia usaha Indonesia untuk membawa bisnis <b>Go Digital, Go Global</b>. Layanan ini mencakup internet dedicated, Cloud PBX, hingga solusi manajemen bisnis (kasir online, CRM).
+                  Dirancang khusus untuk mendukung produktivitas UMKM hingga Enterprise.
+                </p>
+                <div class="flex items-center gap-4 text-xs font-medium text-gray-400">
+                  <span class="flex items-center gap-1"><i class="fas fa-check-circle text-green-500"></i> High Speed</span>
+                  <span class="flex items-center gap-1"><i class="fas fa-check-circle text-green-500"></i> Business Solution</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. NeuCentriX -->
+            <div class="product-card bg-white rounded-2xl p-6 flex flex-col md:flex-row gap-6 md:gap-8 fade-in-up delay-200 group">
+              <div class="w-full md:w-48 h-40 md:h-auto shrink-0 logo-wrapper rounded-xl flex items-center justify-center p-4 border border-gray-100 group-hover:border-red-100 transition-colors relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-orange-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                <img src="../assets/images/product/neuCentrIX.png" alt="NeuCentriX" class="max-w-full max-h-full object-contain relative z-10 transition-transform duration-300 group-hover:scale-110" />
+              </div>
+
+              <div class="flex-1 flex flex-col justify-center">
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-xl font-bold text-gray-800 group-hover:text-red-600 transition-colors">NeuCentriX</h3>
+                  <span class="text-[10px] font-bold px-2 py-0.5 bg-orange-50 text-orange-600 rounded border border-orange-100">Data Center</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4 text-justify">
+                  Penyedia layanan <b>Data Center</b> dan <b>Cloud Computing</b> kelas dunia dengan jaringan terluas di Indonesia. NeuCentriX menawarkan Colocation, Cloud (IaaS/PaaS), dan Disaster Recovery dengan standar keamanan global,
+                  menjamin data perusahaan Anda aman dan selalu tersedia.
+                </p>
+                <div class="flex items-center gap-4 text-xs font-medium text-gray-400">
+                  <span class="flex items-center gap-1"><i class="fas fa-check-circle text-green-500"></i> Tier 3 Standard</span>
+                  <span class="flex items-center gap-1"><i class="fas fa-check-circle text-green-500"></i> Carrier Neutral</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. AstiNET -->
+            <div class="product-card bg-white rounded-2xl p-6 flex flex-col md:flex-row gap-6 md:gap-8 fade-in-up delay-300 group">
+              <div class="w-full md:w-48 h-40 md:h-auto shrink-0 logo-wrapper rounded-xl flex items-center justify-center p-4 border border-gray-100 group-hover:border-red-100 transition-colors relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-blue-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                <img src="../assets/images/product/ASTINet.png" alt="AstiNET" class="max-w-full max-h-full object-contain relative z-10 transition-transform duration-300 group-hover:scale-110" />
+              </div>
+
+              <div class="flex-1 flex flex-col justify-center">
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-xl font-bold text-gray-800 group-hover:text-red-600 transition-colors">AstiNET</h3>
+                  <span class="text-[10px] font-bold px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded border border-indigo-100">Dedicated Internet</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4 text-justify">
+                  Layanan akses internet <b>Dedicated</b> (1:1) dengan jaminan performa tinggi dan SLA (Service Level Agreement). AstiNET adalah solusi ideal bagi korporasi yang membutuhkan koneksi stabil 24/7 untuk aplikasi bisnis kritikal
+                  seperti perbankan, e-commerce, dan operasional kantor pusat.
+                </p>
+                <div class="flex items-center gap-4 text-xs font-medium text-gray-400">
+                  <span class="flex items-center gap-1"><i class="fas fa-check-circle text-green-500"></i> Dedicated 1:1</span>
+                  <span class="flex items-center gap-1"><i class="fas fa-check-circle text-green-500"></i> High SLA</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Wifi.id -->
+            <div class="product-card bg-white rounded-2xl p-6 flex flex-col md:flex-row gap-6 md:gap-8 fade-in-up delay-400 group">
+              <div class="w-full md:w-48 h-40 md:h-auto shrink-0 logo-wrapper rounded-xl flex items-center justify-center p-4 border border-gray-100 group-hover:border-red-100 transition-colors relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                <img src="../assets/images/product/wifi.id.png" alt="Wifi.id" class="max-w-full max-h-full object-contain relative z-10 transition-transform duration-300 group-hover:scale-110" />
+              </div>
+
+              <div class="flex-1 flex flex-col justify-center">
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-xl font-bold text-gray-800 group-hover:text-red-600 transition-colors">Wifi.id</h3>
+                  <span class="text-[10px] font-bold px-2 py-0.5 bg-red-50 text-red-600 rounded border border-red-100">Public Internet</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4 text-justify">
+                  Jaringan internet publik berbasis Wi-Fi terbesar di Indonesia. Tersedia di ribuan lokasi strategis (Corner, Station, Cafe) dengan kecepatan hingga 100Mbps. Solusi praktis bagi masyarakat untuk tetap terhubung secara
+                  digital dengan harga terjangkau dan akses yang mudah.
+                </p>
+                <div class="flex items-center gap-4 text-xs font-medium text-gray-400">
+                  <span class="flex items-center gap-1"><i class="fas fa-check-circle text-green-500"></i> Wide Coverage</span>
+                  <span class="flex items-center gap-1"><i class="fas fa-check-circle text-green-500"></i> High Speed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Floating Scroll Button -->
+    <button
+      id="scrollToTopBtn"
+      class="fixed bottom-8 right-8 z-50 bg-red-600 text-white w-12 h-12 rounded-full shadow-lg shadow-red-600/30 flex items-center justify-center transition-all duration-300 scroll-btn-hidden hover:bg-red-700 hover:scale-110 active:scale-90"
+      title="Kembali ke Atas"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../assets/js/script.js"></script>
+
+    <script>
+      // Logic Scroll to Top
+      document.addEventListener("DOMContentLoaded", () => {
+        const mainContent = document.getElementById("main-scroll-area");
+        const scrollBtn = document.getElementById("scrollToTopBtn");
+
+        mainContent.addEventListener("scroll", () => {
+          if (mainContent.scrollTop > 300) {
+            scrollBtn.classList.remove("scroll-btn-hidden");
+            scrollBtn.classList.add("scroll-btn-visible");
+          } else {
+            scrollBtn.classList.remove("scroll-btn-visible");
+            scrollBtn.classList.add("scroll-btn-hidden");
+          }
+        });
+
+        scrollBtn.addEventListener("click", () => {
+          mainContent.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+    </script>
+  </body>
+</html>

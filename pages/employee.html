@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee & Intern - GS Portal</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Style External -->
+    <link rel="stylesheet" href="../assets/css/sidebar.css" />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f8fafc;
+        color: #334155;
+      }
+
+      /* Animasi Tab */
+      .tab-content {
+        animation: fadeInUp 0.5s ease-out;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Active Tab Style */
+      .tab-btn.active {
+        color: #dc2626;
+        border-bottom: 3px solid #dc2626;
+        background-color: #fef2f2;
+      }
+
+      /* Card Hover Effect */
+      .profile-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .profile-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border-color: #fca5a5; /* Red-300 */
+      }
+
+      /* Manager/Mentor Card Special */
+      .boss-card {
+        background: linear-gradient(135deg, #ffffff 0%, #fff1f2 100%);
+        border: 1px solid #fecaca;
+      }
+    </style>
+  </head>
+
+  <!-- Layout App Shell -->
+  <body class="bg-gray-50 h-screen w-full overflow-hidden flex">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar-component">
+      <!-- === TOMBOL CLOSE (Hanya Muncul di Mobile) === -->
+      <button id="close-sidebar" class="md:hidden absolute top-4 right-4 text-white/80 hover:text-white p-2">
+        <i class="fas fa-times text-2xl"></i>
+      </button>
+
+      <div class="sidebar-logo">
+        <!-- Logo Telkom (Pastikan PNG transparan) -->
+        <img src="/assets/images/logo/logo.png" alt="Telkom Indonesia" class="logo-full w-32" />
+        <img src="/assets/images/logo/logo.png" alt="T" class="logo-icon hidden" />
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="/index.html" class="nav-link">
+              <i class="fas fa-home text-lg w-6 text-center"></i>
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/flowchart.html" class="nav-link">
+              <i class="fas fa-project-diagram text-lg w-6 text-center"></i>
+              <span>Flowchart</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/policy.html" class="nav-link">
+              <i class="fas fa-file-shield text-lg w-6 text-center"></i>
+              <span>Policy</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/employee.html" class="nav-link">
+              <i class="fas fa-users text-lg w-6 text-center"></i>
+              <span>Employee</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/product.html" class="nav-link">
+              <i class="fas fa-box-open text-lg w-6 text-center"></i>
+              <span>Product</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/report.html" class="nav-link">
+              <i class="fas fa-chart-line text-lg w-6 text-center"></i>
+              <span>Report</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 h-full p-4 md:p-8 overflow-y-auto ml-0 transition-all duration-300 relative scroll-smooth">
+      <!-- Header Placeholder -->
+      <!-- Header Section -->
+      <div id="header" class="mb-6 md:mb-8 fade-in-up">
+        <div class="flex justify-between items-center bg-white p-5 rounded-2xl shadow-sm border-l-4 border-red-600">
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight text-gray-800">Government Service Portal</h2>
+            <p class="text-sm text-gray-500 mt-1">Sinergi membangun negeri.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Container -->
+      <div class="p-4 md:p-8 pt-4 pb-20">
+        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden min-h-[85vh]">
+          <!-- Sticky Navigation Tabs -->
+          <div class="sticky top-0 z-20 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-6 pt-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
+              <div>
+                <h1 class="text-2xl font-bold text-gray-800">Team Directory</h1>
+                <p class="text-sm text-gray-500">Divisi Government Service (GS)</p>
+              </div>
+              <!-- Stats Badges -->
+              <div class="flex gap-3">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-600 border border-blue-100"> <i class="fas fa-users mr-1"></i> 11 Employees </span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-600 border border-green-100"> <i class="fas fa-user-graduate mr-1"></i> 6 Interns </span>
+              </div>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex w-full border-b border-gray-100">
+              <button onclick="switchTab('employee')" id="btn-employee" class="tab-btn active w-1/2 md:w-auto px-8 py-3 text-sm md:text-base font-medium text-gray-500 hover:text-red-500 transition-colors border-b-3 border-transparent">
+                <i class="fas fa-id-card-clip mr-2"></i> Employee
+              </button>
+              <button onclick="switchTab('internship')" id="btn-internship" class="tab-btn w-1/2 md:w-auto px-8 py-3 text-sm md:text-base font-medium text-gray-500 hover:text-red-500 transition-colors border-b-3 border-transparent">
+                <i class="fas fa-graduation-cap mr-2"></i> Internship
+              </button>
+            </div>
+          </div>
+
+          <!-- Content Area -->
+          <div class="p-6 md:p-10 bg-gray-50/30">
+            <!-- === TAB 1: EMPLOYEE === -->
+            <div id="content-employee" class="tab-content block">
+              <!-- 1. The Manager (Highlight) -->
+              <div class="mb-10">
+                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Divisi Leader</h3>
+                <div class="boss-card rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-10 shadow-sm relative overflow-hidden group">
+                  <!-- Background Decoration -->
+                  <div class="absolute top-0 right-0 w-64 h-64 bg-red-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+
+                  <!-- Foto Manager -->
+                  <div class="relative shrink-0">
+                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-gradient-to-br from-red-500 to-red-700 shadow-lg">
+                      <img src="../assets/images/employee/Asep.png" class="w-full h-full rounded-full object-cover border-4 border-white bg-white" alt="Manager" />
+                    </div>
+                    <div class="absolute bottom-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded shadow-md">MGR</div>
+                  </div>
+
+                  <!-- Info Manager -->
+                  <div class="text-center md:text-left z-10">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-1 group-hover:text-red-600 transition-colors">Asep Abdul Kodir Djaelani</h2>
+                    <p class="text-red-500 font-medium mb-4">Manager Government Service</p>
+                    <div class="inline-flex items-center px-4 py-2 rounded-lg bg-white border border-gray-200 text-sm text-gray-600 shadow-sm"><i class="fas fa-id-badge text-red-400 mr-2"></i> NIK: 810034</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. The Team Grid -->
+              <div>
+                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Team Members</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  <!-- Card Item (Template) -->
+                  <!-- Zico -->
+                  <div class="profile-card bg-white rounded-xl p-6 border border-gray-100 flex flex-col items-center text-center relative overflow-hidden">
+                    <div class="w-24 h-24 rounded-full mb-4 p-1 border border-gray-200 shadow-sm">
+                      <img src="../assets/images/employee/Zico.png" class="w-full h-full rounded-full object-cover" alt="Zico" />
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg line-clamp-1">Zico Venancio S.</h4>
+                    <p class="text-xs text-red-500 font-semibold mb-2 uppercase">Account Manager</p>
+                    <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded border border-gray-100">NIK: 910173</span>
+                  </div>
+
+                  <!-- Ishak -->
+                  <div class="profile-card bg-white rounded-xl p-6 border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-24 h-24 rounded-full mb-4 p-1 border border-gray-200 shadow-sm">
+                      <img src="../assets/images/employee/Ishak.png" class="w-full h-full rounded-full object-cover" alt="Ishak" />
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg line-clamp-1">Ishak Panjaitan</h4>
+                    <p class="text-xs text-red-500 font-semibold mb-2 uppercase">Account Manager</p>
+                    <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded border border-gray-100">NIK: 406710</span>
+                  </div>
+
+                  <!-- Marlincha -->
+                  <div class="profile-card bg-white rounded-xl p-6 border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-24 h-24 rounded-full mb-4 p-1 border border-gray-200 shadow-sm">
+                      <img src="../assets/images/employee/Marlincha.png" class="w-full h-full rounded-full object-cover" alt="Marlincha" />
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg line-clamp-1">Marlincha S.</h4>
+                    <p class="text-xs text-red-500 font-semibold mb-2 uppercase">Account Manager</p>
+                    <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded border border-gray-100">NIK: 956134</span>
+                  </div>
+
+                  <!-- Ivan -->
+                  <div class="profile-card bg-white rounded-xl p-6 border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-24 h-24 rounded-full mb-4 p-1 border border-gray-200 shadow-sm">
+                      <img src="../assets/images/employee/Ivan.png" class="w-full h-full rounded-full object-cover" alt="Ivan" />
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg line-clamp-1">Ivan Sandy N.</h4>
+                    <p class="text-xs text-red-500 font-semibold mb-2 uppercase">Account Manager 2</p>
+                    <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded border border-gray-100">NIK: 866152</span>
+                  </div>
+
+                  <!-- Ery -->
+                  <div class="profile-card bg-white rounded-xl p-6 border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-24 h-24 rounded-full mb-4 p-1 border border-gray-200 shadow-sm">
+                      <img src="../assets/images/employee/Ery.png" class="w-full h-full rounded-full object-cover" alt="Ery" />
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg line-clamp-1">Ery Chandra S.</h4>
+                    <p class="text-xs text-red-500 font-semibold mb-2 uppercase">AM Experience</p>
+                    <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded border border-gray-100">NIK: 404413</span>
+                  </div>
+
+                  <!-- Frengky -->
+                  <div class="profile-card bg-white rounded-xl p-6 border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-24 h-24 rounded-full mb-4 p-1 border border-gray-200 shadow-sm">
+                      <img src="../assets/images/employee/Frengky.png" class="w-full h-full rounded-full object-cover" alt="Frengky" />
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg line-clamp-1">Frengky F. H.</h4>
+                    <p class="text-xs text-red-500 font-semibold mb-2 uppercase">AM Experience</p>
+                    <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded border border-gray-100">NIK: 403079</span>
+                  </div>
+
+                  <!-- Dicky -->
+                  <div class="profile-card bg-white rounded-xl p-6 border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-24 h-24 rounded-full mb-4 p-1 border border-gray-200 shadow-sm">
+                      <img src="../assets/images/employee/Dicky.png" class="w-full h-full rounded-full object-cover" alt="Dicky" />
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg line-clamp-1">Dicky Christian</h4>
+                    <p class="text-xs text-red-500 font-semibold mb-2 uppercase">Account Manager 1</p>
+                    <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded border border-gray-100">NIK: 950413</span>
+                  </div>
+
+                  <!-- Veberia -->
+                  <div class="profile-card bg-white rounded-xl p-6 border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-24 h-24 rounded-full mb-4 p-1 border border-gray-200 shadow-sm">
+                      <img src="../assets/images/employee/Veberia.png" class="w-full h-full rounded-full object-cover" alt="Veberia" />
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg line-clamp-1">Veberia Panjaitan</h4>
+                    <p class="text-xs text-red-500 font-semibold mb-2 uppercase">Officer 2 Sales</p>
+                    <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded border border-gray-100">NIK: 980006</span>
+                  </div>
+
+                  <!-- Vebrina -->
+                  <div class="profile-card bg-white rounded-xl p-6 border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-24 h-24 rounded-full mb-4 p-1 border border-gray-200 shadow-sm">
+                      <img src="../assets/images/employee/Vebrina.png" class="w-full h-full rounded-full object-cover" alt="Vebrina" />
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg line-clamp-1">Vebrina Marty</h4>
+                    <p class="text-xs text-red-500 font-semibold mb-2 uppercase">Inputer GS</p>
+                    <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded border border-gray-100">NIK: 44197</span>
+                  </div>
+
+                  <!-- Lailani -->
+                  <div class="profile-card bg-white rounded-xl p-6 border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-24 h-24 rounded-full mb-4 p-1 border border-gray-200 shadow-sm">
+                      <img src="../assets/images/employee/Lailany.png" class="w-full h-full rounded-full object-cover" alt="Lailani" />
+                    </div>
+                    <h4 class="font-bold text-gray-800 text-lg line-clamp-1">Lailani Soraya</h4>
+                    <p class="text-xs text-red-500 font-semibold mb-2 uppercase">Inputer GS</p>
+                    <span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded border border-gray-100">NIK: 30171</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- === TAB 2: INTERNSHIP === -->
+            <div id="content-internship" class="tab-content hidden">
+              <!-- 1. The Mentor (Highlight) -->
+              <div class="mb-10">
+                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Mentor Magang</h3>
+                <div class="boss-card rounded-2xl p-6 flex items-center gap-6 shadow-sm border border-orange-200 bg-orange-50/50">
+                  <div class="w-24 h-24 rounded-full p-1 bg-gradient-to-br from-orange-400 to-orange-600 shadow-md">
+                    <img src="../assets/images/employee/Veberia.png" class="w-full h-full rounded-full object-cover border-2 border-white" alt="Mentor" />
+                  </div>
+                  <div>
+                    <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-1">Veberia Panjaitan</h2>
+                    <p class="text-orange-600 font-medium text-sm">Dedicated Mentor</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. Intern List -->
+              <div>
+                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Internship Students (Batch Aug 2025)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                  <!-- Intern 1: Michael (You!) -->
+                  <div class="profile-card bg-white rounded-xl p-5 border-l-4 border-red-500 shadow-sm flex gap-4 relative overflow-hidden">
+                    <!-- Badge "You" -->
+                    <div class="absolute top-2 right-2 bg-red-100 text-red-600 text-[10px] font-bold px-2 py-0.5 rounded">YOU</div>
+
+                    <img src="../assets/images/internship/mike.png" class="w-20 h-20 rounded-lg object-cover bg-gray-100" alt="Mike" />
+                    <div class="flex flex-col justify-between w-full">
+                      <div>
+                        <h4 class="font-bold text-gray-800 text-sm md:text-base leading-tight">Michael Babtista P.</h4>
+                        <p class="text-xs text-gray-500 mt-1">NIM: 231712092</p>
+                      </div>
+                      <div class="mt-3 space-y-1">
+                        <div class="flex items-center text-xs text-gray-600"><i class="fas fa-university w-4 text-center text-gray-400 mr-1"></i> USU - T. Informatika</div>
+                        <div class="flex items-center text-xs text-green-600 bg-green-50 w-fit px-2 py-0.5 rounded"><i class="fas fa-calendar-alt mr-1"></i> Agt 2025</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Intern 2: Rifky -->
+                  <div class="profile-card bg-white rounded-xl p-5 border border-gray-100 shadow-sm flex gap-4">
+                    <img src="../assets/images/internship/ripki.png" class="w-20 h-20 rounded-lg object-cover bg-gray-100" alt="Rifky" />
+                    <div class="flex flex-col justify-between w-full">
+                      <div>
+                        <h4 class="font-bold text-gray-800 text-sm md:text-base leading-tight">M. Rifky Kembaren</h4>
+                        <p class="text-xs text-gray-500 mt-1">NIM: 231712082</p>
+                      </div>
+                      <div class="mt-3 space-y-1">
+                        <div class="flex items-center text-xs text-gray-600"><i class="fas fa-university w-4 text-center text-gray-400 mr-1"></i> USU - T. Informatika</div>
+                        <div class="flex items-center text-xs text-green-600 bg-green-50 w-fit px-2 py-0.5 rounded"><i class="fas fa-calendar-alt mr-1"></i> Agt 2025</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Intern 3: Farhan -->
+                  <div class="profile-card bg-white rounded-xl p-5 border border-gray-100 shadow-sm flex gap-4">
+                    <img src="../assets/images/internship/parhan.png" class="w-20 h-20 rounded-lg object-cover bg-gray-100" alt="Farhan" />
+                    <div class="flex flex-col justify-between w-full">
+                      <div>
+                        <h4 class="font-bold text-gray-800 text-sm md:text-base leading-tight">M. Farhan</h4>
+                        <p class="text-xs text-gray-500 mt-1">NIM: 231712087</p>
+                      </div>
+                      <div class="mt-3 space-y-1">
+                        <div class="flex items-center text-xs text-gray-600"><i class="fas fa-university w-4 text-center text-gray-400 mr-1"></i> USU - T. Informatika</div>
+                        <div class="flex items-center text-xs text-green-600 bg-green-50 w-fit px-2 py-0.5 rounded"><i class="fas fa-calendar-alt mr-1"></i> Agt 2025</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Intern 4: Jodi -->
+                  <div class="profile-card bg-white rounded-xl p-5 border border-gray-100 shadow-sm flex gap-4">
+                    <img src="../assets/images/internship/jodii.png" class="w-20 h-20 rounded-lg object-cover bg-gray-100" alt="Jodi" />
+                    <div class="flex flex-col justify-between w-full">
+                      <div>
+                        <h4 class="font-bold text-gray-800 text-sm md:text-base leading-tight">Jodi Handika F. S.</h4>
+                        <p class="text-xs text-gray-500 mt-1">NIM: 231712099</p>
+                      </div>
+                      <div class="mt-3 space-y-1">
+                        <div class="flex items-center text-xs text-gray-600"><i class="fas fa-university w-4 text-center text-gray-400 mr-1"></i> USU - T. Informatika</div>
+                        <div class="flex items-center text-xs text-green-600 bg-green-50 w-fit px-2 py-0.5 rounded"><i class="fas fa-calendar-alt mr-1"></i> Agt 2025</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Intern 5: Ihsan -->
+                  <div class="profile-card bg-white rounded-xl p-5 border border-gray-100 shadow-sm flex gap-4">
+                    <img src="../assets/images/internship/isan.png" class="w-20 h-20 rounded-lg object-cover bg-gray-100" alt="Ihsan" />
+                    <div class="flex flex-col justify-between w-full">
+                      <div>
+                        <h4 class="font-bold text-gray-800 text-sm md:text-base leading-tight">Ihsan Fahrezi Lubis</h4>
+                        <p class="text-xs text-gray-500 mt-1">NIM: 231712103</p>
+                      </div>
+                      <div class="mt-3 space-y-1">
+                        <div class="flex items-center text-xs text-gray-600"><i class="fas fa-university w-4 text-center text-gray-400 mr-1"></i> USU - T. Informatika</div>
+                        <div class="flex items-center text-xs text-green-600 bg-green-50 w-fit px-2 py-0.5 rounded"><i class="fas fa-calendar-alt mr-1"></i> Agt 2025</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../assets/js/script.js"></script>
+
+    <!-- Tab Logic -->
+    <script>
+      function switchTab(type) {
+        // Hide all content
+        document.querySelectorAll(".tab-content").forEach((el) => el.classList.add("hidden"));
+        // Reset tabs
+        document.querySelectorAll(".tab-btn").forEach((btn) => btn.classList.remove("active"));
+
+        // Show selected
+        document.getElementById("content-" + type).classList.remove("hidden");
+        document.getElementById("btn-" + type).classList.add("active");
+
+        // Scroll to top of content
+        document.querySelector("main").scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
